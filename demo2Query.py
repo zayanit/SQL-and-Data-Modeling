@@ -20,25 +20,25 @@ db.create_all()
 
 
 # Queries which I run in the terminal
-'''
-from demo2Query import User, db
-user = User(name='Bob')
-db.session.add(user)
-db.session.commit()
+
+# from demo2Query import User, db
+# user = User(name='Bob')
+# db.session.add(user)
+# db.session.commit()
 
 ### Transient: an object exists, it was defined
-user1 = User(name='Mohammed')  ## Transient Stage
-user2 = User(name='Fawzy')     ## Transient Stage
-user3 = User(name='Ahmed')     ## Transient Stage
+# user1 = User(name='Mohammed')  ## Transient Stage
+# user2 = User(name='Fawzy')     ## Transient Stage
+# user3 = User(name='Ahmed')     ## Transient Stage
 
-db.session.add_all([user1, user2, user3])   ## Stage Pending
-db.session.commit()
+# db.session.add_all([user1, user2, user3])   ## Stage Pending
+# db.session.commit()
 
 # the same result for filtering
-User.query.filter(User.name=='Bob').all()
-db.session.query(User).filter_by(name='Bob').all()
+# User.query.filter(User.name=='Bob').all()
+# db.session.query(User).filter_by(name='Bob').all()
 
-User.query.filter(User.name.like('%d%')).all()
-User.query.filter(User.name.like('%d%')).limit(5).all()
-User.query.filter(User.name.like('%M%')).all()
-User.query.filter(User.name=='Bob').count()
+# User.query.filter(User.name.like('%d%')).all()
+# User.query.filter(User.name.like('%d%')).limit(5).all()
+# User.query.filter(User.name.like('%M%')).all()
+# User.query.filter(User.name=='Bob').count()
