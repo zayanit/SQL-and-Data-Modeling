@@ -77,8 +77,8 @@
         const deleteButton = deleteButtons[i];
         deleteButton.onclick = function(e) {
           const todoId = e.target.dataset['id'];
-          fetch('/todos/' + todoId + '/delete', {
-            method: 'POST',
+          fetch('/todos/' + todoId, {
+            method: 'DELETE',
             headers: {
               'Content-Type': 'application/json'
             }
