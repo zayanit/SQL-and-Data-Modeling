@@ -39,7 +39,11 @@
       <div id="error" class="hidden">Somthing went wrong!</div>
       <ul id="todos">
         {% for d in data %}
-          <li><input class="check-completed" data-id="{{ d.id }}" type="checkbox" {% if d.completed %} checked {% endif %}>{{ d.description }}</li>
+          <li>
+            <input class="check-completed" data-id="{{ d.id }}" type="checkbox" {% if d.completed %} checked {% endif %}>
+            {{ d.description }}
+            <button class="delete-todo" data-id="{{ d.id }}">&cross;</button>
+          </li>
         {% endfor %}
       </ul>
     </div>
@@ -63,7 +67,27 @@
             document.getElementById('error').className = 'hidden';
           })
           .catch(function() {
-            document.getElementById('error').className = '';
+            document.getElementById('error').className = 'appear';
+          })
+        }
+      }
+
+      const deleteButtons = document.querySelectorAll('.delete-todo');
+      for (i = 0; i < deleteButtons.length; i++) {
+        const deleteButton = deleteButtons[i];
+        deleteButton.onclick = function(e) {
+          const todoId = e.target.dataset['id'];
+          fetch('/todos/' + todoId + '/delete', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(function() {
+            document.getElementById('error').className = 'hidden';
+          })
+          .catch(function() {
+            document.getElementById('error').className = 'appear'
           })
         }
       }
