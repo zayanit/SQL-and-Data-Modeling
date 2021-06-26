@@ -4,6 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import sys
 
+from sqlalchemy.orm import backref
+
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://zayan@127.0.0.1:5432/todoapp'
@@ -21,6 +23,12 @@ class Todo(db.Model):
 
 	def __repr__(self):
 		return f'<TODO {self.id} {self.description}>'
+
+class TodoList(db.Model):
+	__tablename__ = 'todolists'
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(), nullable=False)
+	todos = db.relationship('Todo', backref='list', lazy=True)
 
 # db.create_all()
 
