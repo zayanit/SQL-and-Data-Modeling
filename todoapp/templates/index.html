@@ -30,7 +30,19 @@
     </style>
   </head>
   <body>
+    <div class="lists-wrapper">
+      <ul id="lists">
+        {% for list in lists %}
+          <li>
+            <a href="/lists/{{ list.id }}">
+              {{ list.name }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
     <div class="todos-wrapper">
+      <h4>{{ active_list.name }}</h4>
       <!--<form method="POST" action="/todos/create">-->
       <form id="form">
         <input type="text" name="description" id="description" />
