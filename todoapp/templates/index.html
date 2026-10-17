@@ -61,7 +61,7 @@
         <ul id="todos">
           {% for todo in todos %}
           <li>
-            <input data-id="{{ todo.id }}" class="todo-check-completed" type="checkbox" name="complete" id="complete" {% if todo.completed %} checked {%endif%} />
+            <input data-id="{{ todo.id }}" class="todo-check-completed" type="checkbox" name="complete" id="complete" {% if todo.complete %} checked {%endif%} />
             {{ todo.description }}
             <button class="delete-todo" data-id="{{ todo.id }}">&cross;</button>
           </li>
