@@ -99,7 +99,7 @@ def set_completed_todo(todo_id):
 	try:
 		completed = request.get_json()['completed']
 		todo = Todo.query.get(todo_id)
-		todo.completed = completed
+		todo.complete = completed
 		db.session.commit()
 	except:
 		db.session.rollback()
@@ -169,7 +169,7 @@ def set_completed_list(list_id):
 	try:
 		list = TodoList.query.get(list_id)
 		for todo in list.todos:
-			todo.completed = True
+			todo.complete = True
 		db.session.commit()
 	except:
 		db.session.rollback()
